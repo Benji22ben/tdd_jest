@@ -1,6 +1,12 @@
 const { faker } = require('@faker-js/faker');
 const { bubbleSorting, quickSorting, selectionSorting, insertionSorting, mergeSorting } = require('./index.js');
 
+
+// Fake data creation 
+// @param number: number of data to create
+// @param maxRandomNumber: maximum value of random numbers
+// @param minRandomNumber: minimum value of random numbers
+// @return (number[]) array of random numbers
 function createData(number = 100, maxRandomNumber = 100, minRandomNumber = 0) {
     let data = []
 
@@ -11,6 +17,10 @@ function createData(number = 100, maxRandomNumber = 100, minRandomNumber = 0) {
     return data
 }
 
+// Data sorting test
+// @param (function) sortingFunction: sorting function to test
+// @param (text) algorithmName: name of the algorithm to test
+// @return (void)
 function testSortingAlgorithm(sortingFunction, algorithmName) {
     describe(`${algorithmName} Test`, () => {
         const dataNumber = 100;

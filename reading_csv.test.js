@@ -1,4 +1,5 @@
 const { readCsv } = require(".csv_manipulations.js");
+
 describe("Manipulating CSV", () => {
     test("File is read correctly", () => {
         const data = readCsv("data.csv")

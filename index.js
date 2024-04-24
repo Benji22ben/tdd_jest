@@ -1,3 +1,6 @@
+// Sort an array of numbers using the bubble sort algorithm
+// @param (number[]) array: array of numbers to sort
+// @return (number[]) sorted array
 function bubbleSorting(array) {
     // Bubble sort implementation
     for (var i = 0; i < array.length; i++) {
@@ -21,6 +24,9 @@ function bubbleSorting(array) {
     return array
 }
 
+// Sort an array of numbers using the quick sort algorithm
+// @param (number[]) array: array of numbers to sort
+// @return (number[]) sorted array
 function quickSorting(array) {
     if (array.length < 2) return array;
     let pivot = array[0];
@@ -38,12 +44,9 @@ function quickSorting(array) {
     return quickSorting(left).concat(pivot, quickSorting(right));
 }
 
-function swap(arr, xp, yp) {
-    var temp = arr[xp];
-    arr[xp] = arr[yp];
-    arr[yp] = temp;
-}
-
+// Sort an array of numbers using the selection sort algorithm
+// @param (number[]) array: array of numbers to sort
+// @return (number[]) sorted array
 function selectionSorting(array, n) {
 
     for (let i = 0; i < array.length; i++) {
@@ -63,6 +66,9 @@ function selectionSorting(array, n) {
     return array;
 }
 
+// Sort an array of numbers using the insertion sort algorithm
+// @param (number[]) array: array of numbers to sort
+// @return (number[]) sorted array
 function insertionSorting(array) {
     let n = array.length;
     for (let i = 1; i < n; i++) {
@@ -79,6 +85,9 @@ function insertionSorting(array) {
     return array;
 }
 
+// Complementary function for mergeSorting
+// @param (number[]) left: left array
+// @param (number[]) right: right array
 function merge(left, right) {
     let arr = []
     // Break out of loop if any one of the array becomes empty
@@ -96,6 +105,9 @@ function merge(left, right) {
     return [...arr, ...left, ...right]
 }
 
+// Sort an array of numbers using the merge sort algorithm
+// @param (number[]) array: array of numbers to sort
+// @return (number[]) sorted array
 function mergeSorting(array) {
     const half = array.length / 2
 
