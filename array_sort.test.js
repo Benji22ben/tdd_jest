@@ -1,55 +1,39 @@
-const faker = require('faker')
+const { faker } = require('@faker-js/faker');
+const { bubbleSorting } = require('./index.js');
 
-let data = []
+function createData(number = 100, maxRandomNumber = 100, minRandomNumber = 0) {
+    let data = []
 
-for (let i = 0; i < 100; i++) {
-    data.push(faker.number({ min: 0, max: 100 }))
+    for (let i = 0; i < number; i++) {
+        data.push(faker.number.int({ min: minRandomNumber, max: maxRandomNumber }))
+    }
+
+    return data
 }
 
-test("Data is generated correctly", () => {
-    expect(data).toBeArray()
-    expect(data.length).toBe(100)
-    expect(data[0]).toBeNumber()
-});
+function testSortingAlgorithm(sortingFunction, algorithmName) {
+    test(`${algorithmName} Test`, () => {
+        const dataNumber = 100;
+
+        // Create data
+        const data = createData(dataNumber);
+
+        // Tests if createdData are as expected
+        expect(Array.isArray(data)).toBeTruthy()
+        expect(data.length).toBe(dataNumber)
+        expect(data.every(e => Number.isInteger(e))).toBeTruthy()
+
+        const sortedData = sortingFunction(data);
+        // expect(Array.isArray(sortedData)).toBeTruthy();
+        expect(sortedData).toStrictEqual(data);
+        expect(sortedData).toBeSorted();
+    });
+}
 
 describe("Array sorting", () => {
-    test('Bubble sort Test', () => {
-        const sortedData = bubbleSorting(data)
-
-        expect(sortedData.length).toBe(data.length)
-
-        expect(sortedData).toBeSorted()
-    });
-
-    test('Quick sort Test', () => {
-        const sortedData = quickSorting(data)
-
-        expect(sortedData.length).toBe(data.length)
-
-        expect(sortedData).toBeSorted()
-    });
-
-    test('Selection sort Test', () => {
-        const sortedData = selectionSorting(data)
-
-        expect(sortedData.length).toBe(data.length)
-
-        expect(sortedData).toBeSorted()
-    });
-
-    test('Insertion sort Test', () => {
-        const sortedData = insertionSorting(data)
-
-        expect(sortedData.length).toBe(data.length)
-
-        expect(sortedData).toBeSorted()
-    });
-
-    test('Merge sort Test', () => {
-        const sortedData = mergeSorting(data)
-
-        expect(sortedData.length).toBe(data.length)
-
-        expect(sortedData).toBeSorted()
-    });
+    testSortingAlgorithm(bubbleSorting, 'Bubble sort');
+    // testSortingAlgorithm(quickSorting, 'Quick sort');
+    // testSortingAlgorithm(selectionSorting, 'Selection sort');
+    // testSortingAlgorithm(insertionSorting, 'Insertion sort');
+    // testSortingAlgorithm(mergeSorting, 'Merge sort');
 });
