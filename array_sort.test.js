@@ -1,15 +1,55 @@
 const faker = require('faker')
 
-test('Array is sorted correctly', () => {
-    let data = []
+let data = []
 
-    for (let i = 0; i < 100; i++) {
-        data.push(faker.number({ min: 0, max: 100 }))
-    }
+for (let i = 0; i < 100; i++) {
+    data.push(faker.number({ min: 0, max: 100 }))
+}
 
-    const sortedData = [] // Sort with algorithm
+test("Data is generated correctly", () => {
+    expect(data).toBeArray()
+    expect(data.length).toBe(100)
+    expect(data[0]).toBeNumber()
+});
 
-    expect(sortedData.length).toBe(data.length)
+describe("Array sorting", () => {
+    test('Bubble sort Test', () => {
+        const sortedData = bubbleSorting(data)
 
-    expect(sortedData).toBeSorted()
+        expect(sortedData.length).toBe(data.length)
+
+        expect(sortedData).toBeSorted()
+    });
+
+    test('Quick sort Test', () => {
+        const sortedData = quickSorting(data)
+
+        expect(sortedData.length).toBe(data.length)
+
+        expect(sortedData).toBeSorted()
+    });
+
+    test('Selection sort Test', () => {
+        const sortedData = selectionSorting(data)
+
+        expect(sortedData.length).toBe(data.length)
+
+        expect(sortedData).toBeSorted()
+    });
+
+    test('Insertion sort Test', () => {
+        const sortedData = insertionSorting(data)
+
+        expect(sortedData.length).toBe(data.length)
+
+        expect(sortedData).toBeSorted()
+    });
+
+    test('Merge sort Test', () => {
+        const sortedData = mergeSorting(data)
+
+        expect(sortedData.length).toBe(data.length)
+
+        expect(sortedData).toBeSorted()
+    });
 });
