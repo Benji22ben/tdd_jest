@@ -1,12 +1,13 @@
 const { faker } = require('@faker-js/faker');
 const { bubbleSorting, quickSorting, selectionSorting, insertionSorting, mergeSorting } = require('./index.js');
 
-
-// Fake data creation 
-// @param number: number of data to create
-// @param maxRandomNumber: maximum value of random numbers
-// @param minRandomNumber: minimum value of random numbers
-// @return (number[]) array of random numbers
+/** 
+* Fake data creation 
+* @param {number} number: number of data to create
+* @param {number} maxRandomNumber: maximum value of random numbers
+* @param {number} minRandomNumber: minimum value of random numbers
+* @return {number[]} array of random numbers
+*/
 function createData(number = 100, maxRandomNumber = 100, minRandomNumber = 0) {
     let data = []
 
@@ -17,19 +18,21 @@ function createData(number = 100, maxRandomNumber = 100, minRandomNumber = 0) {
     return data
 }
 
-// Data sorting test
-// @param (function) sortingFunction: sorting function to test
-// @param (text) algorithmName: name of the algorithm to test
-// @return (void)
+/**
+* Data sorting test
+* @param {Function} sortingFunction: sorting function to test
+* @param {String} algorithmName: name of the algorithm to test
+* @return {Void}
+*/
 function testSortingAlgorithm(sortingFunction, algorithmName) {
     describe(`${algorithmName} Test`, () => {
         const dataNumber = 100;
 
-        // Create data
+        /** Create data */
         const data = createData(dataNumber);
 
         test(`${algorithmName} data should be created correctly`, () => {
-            // Tests if createdData are as expected
+            /** Tests if createdData are as expected */
             expect(Array.isArray(data)).toBeTruthy()
             expect(data.length).toBe(dataNumber)
             expect(data.every(e => Number.isInteger(e))).toBeTruthy()
@@ -51,6 +54,8 @@ describe("Array sorting", () => {
     testSortingAlgorithm(selectionSorting, 'Selection sort');
     testSortingAlgorithm(insertionSorting, 'Insertion sort');
 
-    // Merge sort is not working properly, I don't know why (When data are created they are the good length but when checked Jest says they're not)
-    // testSortingAlgorithm(mergeSorting, 'Merge sort');
+    /**
+    * Merge sort is not working properly, I don't know why (When data are created they are the good length but when checked Jest says they're not)
+    * testSortingAlgorithm(mergeSorting, 'Merge sort');
+    */
 });
