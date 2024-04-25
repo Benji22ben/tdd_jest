@@ -40,7 +40,7 @@ function testSortingAlgorithm(sortingFunction, algorithmName) {
         test(`${algorithmName} should sort data correctly`, () => {
             expect(Array.isArray(sortedData)).toBeTruthy();
             expect(sortedData.length).toBe(data.length);
-            expect(sortedData).toBeSorted();
+            expect(sortedData).toBeSorted((a, b) => a - b);
         });
     });
 }

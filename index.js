@@ -1,3 +1,4 @@
+
 // Sort an array of numbers using the bubble sort algorithm
 // @param (number[]) array: array of numbers to sort
 // @return (number[]) sorted array
@@ -20,16 +21,21 @@ function bubbleSorting(array) {
             }
         }
     }
-    // Print the sorted array
+
     return array
 }
+
 
 // Sort an array of numbers using the quick sort algorithm
 // @param (number[]) array: array of numbers to sort
 // @return (number[]) sorted array
 function quickSorting(array) {
     if (array.length < 2) return array;
+
+    // Take a pivot to sort around it
     let pivot = array[0];
+
+    // Create two arrays to store elements smaller and larger than the pivot
     const left = [];
     const right = [];
 
@@ -41,13 +47,14 @@ function quickSorting(array) {
         }
     }
 
+    // Recursively sort the left and right arrays
     return quickSorting(left).concat(pivot, quickSorting(right));
 }
 
 // Sort an array of numbers using the selection sort algorithm
 // @param (number[]) array: array of numbers to sort
 // @return (number[]) sorted array
-function selectionSorting(array, n) {
+function selectionSorting(array) {
 
     for (let i = 0; i < array.length; i++) {
         let lowestValue = array[i];
@@ -85,6 +92,7 @@ function insertionSorting(array) {
     return array;
 }
 
+
 // Complementary function for mergeSorting
 // @param (number[]) left: left array
 // @param (number[]) right: right array
@@ -104,6 +112,7 @@ function merge(left, right) {
     // (in case we didn't go through the entire left or right array)
     return [...arr, ...left, ...right]
 }
+
 
 // Sort an array of numbers using the merge sort algorithm
 // @param (number[]) array: array of numbers to sort
