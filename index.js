@@ -25,10 +25,11 @@ function bubbleSorting(array) {
     return array
 }
 
-
-// Sort an array of numbers using the quick sort algorithm
-// @param (number[]) array: array of numbers to sort
-// @return (number[]) sorted array
+/** 
+* Sort an array of numbers using the quick sort algorithm
+* @param {number[]} array: array of numbers to sort
+* @return {number[]} sorted array
+*/
 function quickSorting(array) {
     if (array.length < 2) return array;
 
